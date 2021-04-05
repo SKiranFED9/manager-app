@@ -1,0 +1,52 @@
+<!-- <pre>{{users[0] | json}}</pre> -->
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="search-hero">
+        <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Start searching for a hero by id or name or country">
+      </div>
+    </div>
+    <div class="col-12">
+      <ngb-accordion [closeOthers]="true" [activeIds]="activeIds">
+        <ngb-panel *ngFor="let acc of users | filter:searchText" id="acc-{{acc.id}}" title="{{acc.username}}">
+          <ng-template ngbPanelContent>
+            <label>Street : {{acc.address.street | json}}</label>
+          </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
+    </div>
+  </div>
+</div> -->
+
+
+  <div class="row">
+    <div class="col-12" style="max-height:600px;overflow-x: auto;">
+      <table class="table table-hover table-bordered table-responsive-xl" >
+        <thead>
+          <th> Id </th>
+          <th> Title </th>
+          <th> UserId </th>
+          <th> Body </th>
+          <th>Actions</th>
+        </thead>
+      
+        <tbody>
+      
+      <ng-container *ngFor="let data of users">
+        <tr >
+          <td> {{data.id}} </td>
+          <td> {{data.title}} </td>
+          <td> {{data.userId}} </td>
+          <td> {{data.body}} </td>
+          
+          <td width="120"><button class="btn btn-info btn-sm" (click)="goToMemberDetails(data.id)">View Post</button></td>
+        </tr>
+      </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+
+

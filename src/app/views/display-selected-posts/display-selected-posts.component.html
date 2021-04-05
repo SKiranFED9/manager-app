@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card" *ngIf="cardDetails">
+      <div class="card-header">
+        {{cardDetails.title}} <a class="btn btn-success btn-sm" style="float: right;" routerLinkActive="active" routerLink="/">Back to Posts</a>
+      </div>
+      <div class="card-body">
+        <p class="card-text">{{cardDetails.body}}</p>
+        <a class="btn btn-primary btn-sm" (click)="goToSelectedPostComents(cardDetails.id)">View Comments</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="row"  *ngIf="!isCommentsBtnCliked">
+  <div class="col-12" style="text-align: center;padding-top:5px;">
+    <label>----------To see comments of related manager posts click on View comments Button-----------</label>
+  </div>
+</div>
+
+
+
+<div class="row" *ngIf="isCommentsBtnCliked">
+  <div class="col-12" style="padding-top:10px;">
+   
+  </div>
+  <div class="col-12">
+    <div class="search-hero">
+      <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+        placeholder="Start searching for a comments by name or email or body">
+    </div>
+  </div>
+  <div class="col-12" style="max-height:400px;overflow-x: auto;">
+    <table class="table table-hover table-bordered table-responsive-xl" style="font-size: 14px;">
+      <thead>
+        <th> Id </th>
+        <th> Name </th>
+        <th> Email </th>
+        <th> Body </th>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let data of getComments | filter:searchText">
+          <tr>
+            <td> {{data.id}} </td>
+            <td> {{data.name}} </td>
+            <td> {{data.email}} </td>
+            <td> {{data.body}} </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</div>
